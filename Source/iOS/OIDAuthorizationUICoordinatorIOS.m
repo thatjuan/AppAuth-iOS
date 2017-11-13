@@ -87,7 +87,9 @@ static id<OIDSafariViewControllerFactory> __nullable gSafariViewControllerFactor
     [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
     return YES;
   }
-  BOOL openedSafari = [[UIApplication sharedApplication] openURL:URL];
+  
+  [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+  BOOL openedSafari = YES;
   if (!openedSafari) {
     [self cleanUp];
     NSError *safariError = [OIDErrorUtilities errorWithCode:OIDErrorCodeSafariOpenError
